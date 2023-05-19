@@ -1,0 +1,93 @@
+<html>
+    <title>Login</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/a039ed4d19.js" crossorigin="anonymous"></script>
+        <style>
+          .form{
+            background-color: #aa42f5;
+            color: #fff;
+            border-radius: 20px;
+          }
+          .btn{
+            background-color:#fff;
+            color: #000;
+            border: none;
+          }
+          .btn:hover{
+            color: #000;
+            background-color:#fff;
+          }
+          .btn:focus{
+                box-shadow: none !important; 
+            }
+            a{
+                color:#fff;
+                float: right;
+            }
+            a:hover{
+            color: #fff;
+          }
+          h1{
+                font-weight: 700;
+                background: linear-gradient(to left,#951ac9 ,#c11ac9 );
+                -webkit-text-fill-color: transparent;
+			    -webkit-background-clip: text;
+          }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row d-flex justify-content-center pt-5 mt-5 pb-4">
+                <h1>LOGIN FORM</h1>
+            </div>
+            <div class="row d-flex justify-content-center">    
+                <form  method="post" onsubmit="return verify();" action="/login" class="form p-5">
+                    <div class="form-group form-inline pt-4">
+                        <label for="pwd">Email:</label>
+                        <input type="email" class="form-control ml-5" name="email" placeholder="Enter email" id="email" required>
+                      </div>
+                    <div class="form-group form-inline pt-4">
+                      <label for="pwd">Password:</label>
+                      <input type="password" class="form-control ml-4" name="pwd" placeholder="Enter password" id="pwd" required>
+                    </div>
+                    <a href="/signup">New Member? Singup</a><br>
+                    <button type="submit" class="btn pl-5 pr-5 mt-4"> Login</button>
+                    <p style="color:#fff" class="pt-3" id="wrong"></p>
+                  </form>
+            </div>
+        </div>
+
+        <script>
+
+
+        function verify(){
+            
+               let pwd=document.getElementById("pwd").value;
+               let email=document.getElementById("email").value;
+               let wrong=document.getElementById("wrong");
+                wrong.innerText=" ";
+
+            if(pwd==""||email==""){
+              wrong.innerText+="Empty field is not allowed";
+              return false;
+            }else if(pwd.trim()==""||email.trim()==""){
+              wrong.innerText+="Space is not allowed";
+              return false;
+            }
+            else if(pwd.length<8){
+              wrong.innerText+="Password should be 8 or more characters";
+              return false;
+            }else{
+                return true;
+            } 
+        } 
+           
+        </script>
+    </body>
+</html>
