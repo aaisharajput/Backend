@@ -15,7 +15,7 @@
                 <input type='text' style='border:none' id='p${key_no}' value='${todo.task_list}' disabled>
                 <i class='fa fa-xmark position-relative float-right mr-5' onclick='delet_task(${key_no})'></i>
                 <i class='fa fa-pencil position-relative float-right mr-5' onclick='edit(${key_no})'></i>
-                <input type='checkbox' onclick='complete(${i})' class='form-check-input position-relative float-right mr-5' id='${key_no}' ${(todo.checked)?"checked":'' }></div>`;                    
+                <input type='checkbox' onclick='complete(${key_no})' class='form-check-input position-relative float-right mr-5' id='${key_no}' ${(todo.checked)?"checked":'' }></div>`;                    
                 
                 if(todo.checked){
                     document.getElementById('p'+key_no).style.textDecoration="line-through";                   
