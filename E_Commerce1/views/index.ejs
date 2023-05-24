@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<title>ApnaBazaar</title>
+<head>
+ 
+  <%- include('links'); %>
+  <link href="index.css" rel="stylesheet">
+
+</head>
+     
+
+<body>
+  <div class="container">
+  
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title" id="p_name">p_name  Rs. price</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12 col-md-4">
+                  <img id="p_img" style="height: 80%;width: 115%;">
+              </div>
+              <div class="col-12 col-md-8">
+                <div class="row">
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>saller_name :</p></div> <div class="col-8 col-md-8"><p id="saller_name"></p></div>
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>shipping_charges :</p></div> <div class="col-8 col-md-8"><p id="shipping_charges"></p></div>
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>RAM :</p></div> <div class="col-8 col-md-8"><p id="RAM"></p></div>
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>ROM :</p></div> <div class="col-8 col-md-8"><p id="ROM"></p></div>
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>Expandable :</p></div> <div class="col-8 col-md-8"><p id="Expandable"></p></div>
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>Display :</p></div> <div class="col-8 col-md-8"><p id="Display"></p></div>
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>Camera :</p></div> <div class="col-8 col-md-8"><p id="Camera"></p></div>
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>Battery :</p></div> <div class="col-8 col-md-8"><p id="Battery"></p></div>
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>Processor :</p></div> <div class="col-8 col-md-8"><p id="Processor"></p></div>
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>Warranty :</p></div> <div class="col-8 col-md-8"><p id="Warranty"></p></div>
+                </div>
+              </div>
+              
+            </div> 
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <%- include('header'); %>
+
+<div class="container-fluid">
+  <div class="row pl-5 pt-5">
+    <div class="col-2 col-md-2"><p>Category 1</p></div>
+    <div class="col-2 col-md-2"><p>Category 2</p></div>
+    <div class="col-2 col-md-2"><p>Category 3</p></div>
+    <div class="col-2 col-md-2"><p>Category 4</p></div>
+    <div class="col-2 col-md-2"><p>Category 5</p></div>
+    <div class="col-2 col-md-2"><p>Category 6</p></div>
+  </div>
+    <section class="item_list">
+      <div class="row pt-4 pb-4">
+        <%- include('intro'); %>
+      </div>
+      <div class="row pt-5 title">
+        <h3>Products You Love It.</h3>
+      </div>
+      <div class="row">
+        <%- include('items'); %>
+      </div>
+
+      <div class="add_items" id="add_items">
+        <div class="row title">
+          <h3>More Products</h3>
+        </div>
+
+      </div>
+      <div class="row  d-flex justify-content-center" id="empty" style="color:red">
+        <p></p>
+      </div>
+      <div class="row  d-flex justify-content-center p-4">
+        <button class="btn load" id="load_more">Load more products</button>
+      </div>
+    </section>
+
+    <%- include('footer'); %>
+    <script src="items.js"></script>
+</div>
+</body>
+</html>
