@@ -1,0 +1,91 @@
+
+  
+<div class="container-fluid sliderss owl-carousel p-5" id="sliderss">
+</div>
+<script>
+  let more;
+    let sliderss=document.getElementById("sliderss");
+    get_details(function(data){
+      more=data;
+      for(let i=0;i<5;i++){
+         sliderss.innerHTML+=`
+                        <div class="card">
+                           <div class="product_name">
+                              <h5 id="item_name">${data[i].p_name}</h5>
+                           </div>
+                           <div class="img">
+                              <img src="${data[i].img}" alt="">
+                              <div class="btnn d-flex justify-content-center">
+                                 <button class="btn btn-success" data-toggle="modal" data-target="#myModal"  onclick="more_details(${i})">View Details</button>
+                              </div>
+         
+                           </div>
+                        </div>`;
+                     }
+                     
+                     scrolling();
+    });
+
+    function more_details(id){
+      let saller_name=document.getElementById("saller_name");
+      let p_img=document.getElementById("p_img");
+      let shipping_charges=document.getElementById("shipping_charges");
+      let RAM=document.getElementById("RAM");
+      let ROM=document.getElementById("ROM");
+      let Expandable=document.getElementById("Expandable");
+      let Display=document.getElementById("Display");
+      let Camera=document.getElementById("Camera");
+      let Battery=document.getElementById("Battery");
+      let Processor=document.getElementById("Processor");
+      let Warranty=document.getElementById("Warranty");
+      let p_name=document.getElementById("p_name");
+
+      p_name.innerText=`${more[id].p_name} (${more[id].color}) Rs. ${more[id].price}`;
+      saller_name.innerText=`${more[id].saller_name}`;
+      shipping_charges.innerText=`${more[id].shipping_charges}`;
+      RAM.innerText=`${more[id].p_details.RAM}`;
+      ROM.innerText=`${more[id].p_details.ROM}`;
+      Expandable.innerText=`${more[id].p_details.Expandable}`;
+      Display.innerText=`${more[id].p_details.Display}`;
+      Camera.innerText=`${more[id].p_details.Camera}`;
+      Battery.innerText=`${more[id].p_details.Battery}`;
+      Processor.innerText=`${more[id].p_details.Processor}`;
+      Warranty.innerText=`${more[id].p_details.Warranty}`;
+      p_img.setAttribute("src",`${more[id].img}`);
+   }
+
+   function get_details(callback){
+            let request = new XMLHttpRequest();
+                request.open("POST","/getdetails");
+                request.setRequestHeader("Content-Type","application/json");
+                request.send(JSON.stringify({counter:5}));
+
+                request.addEventListener("load", function(){
+                  callback(JSON.parse(request.responseText))
+                });
+   }
+
+function scrolling(){
+$(".sliderss").owlCarousel({
+  loop: true,
+  autoplay: true,
+  autoplayTimeout: 2000, //2000ms = 2s;
+  autoplayHoverPause: true,
+  responsive: {
+    0:{
+      items:1,
+    },
+    600:{
+      items:2,
+    },
+    900:{
+      items:3,
+    },
+    1250:{
+      items:4,
+    }
+  }
+});
+}
+
+</script>

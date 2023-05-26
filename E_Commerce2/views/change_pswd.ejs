@@ -1,0 +1,155 @@
+<html>
+    <title>Change Password</title>
+    <head>
+      <%- include('links'); %>
+        <style>
+          .form{
+            width: 40%;
+          }
+          .btn{
+            background-color:#951ac9;
+            color: #fff;
+            border: none;
+          }
+          .btn:hover{
+            color: #fff;
+            background-color:#c11ac9;
+          }
+          .btn:focus{
+                box-shadow: none ; 
+            }
+            a{  display: flex;
+                justify-content: left;
+                float: left;
+                font-weight: 500;
+                color:rgb(91, 194, 238);
+                float: right;
+            }
+            a:hover{
+            color: rgb(8, 132, 185);
+            text-decoration: none;
+          }
+          h1{
+                font-weight: 700;
+                background: linear-gradient(to right,#951ac9 ,#c11ac9 );
+                -webkit-text-fill-color: transparent;
+			    -webkit-background-clip: text;
+          }
+
+        .inp{
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            border-radius: 0;
+            
+          }
+        .inp:focus{
+          box-shadow: none;
+          border-bottom:2px solid #951ac9;
+        }
+        p{
+          color: rgb(234, 111, 4)
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row d-flex justify-content-center pt-5 mt-5">
+                <h1>Change Password</h1>
+            </div>
+            <div class="row d-flex justify-content-center"> 
+              <% if(route=='1'){%>   
+                <form  method="post" onsubmit="return change_password();" action="/change_password1" class="form p-4 text-center">
+              <% }else{%>
+                <form  method="post" onsubmit="return change_password();" action="/change_password" class="form p-4 text-center">
+                <%}%>
+                    <div class="form-group form-inline justify-content-center">
+                        <label for="pswd">New Password:</label>
+                        <input type="password" class="form-control ml-5 inp" name="pwd" placeholder="Enter Password" id="pswd" required>
+                        <i class="fa-sharp fa-solid fa-eye pl-3" id="eye"></i>
+                      </div>
+                    <div class="form-group form-inline pt-4 justify-content-center">
+                      <label for="cnf_pswd">Confirm Password:</label>
+                      <input type="password" class="form-control ml-4 inp" name="conf" placeholder="Enter Confirm password" id="cnf_pswd" required>
+                    </div>
+                     <input type="email" name="email" value="<%=email%>" hidden>
+                      <a href="/home">Go Back</a><br>
+                      <button type="submit" class="btn pl-5 pr-5 mt-4">Change</button>     
+                    
+                    <p style="color:red" class="pt-3" id="error_msg"></p>
+                    <p class="text-success pt-3"><%= change_msg %></p>
+                  </form>
+                  <div class="row">
+                    <div class="col-12 col-md-4"></div>
+                    <div class="col-12 col-md-8">
+                      <div class="row">
+                        <div class="col-12 col-md-12"><p>*Password should have 12 or more characters!!</p></div>
+                        <div class="col-12 col-md-12"><p>*Password should contain atleast one special symbols!!</p></div>
+                        <div class="col-12 col-md-12"><p>*Password should contain atleast one number!!</p></div>
+                        <div class="col-12 col-md-12"><p>*Password should contain atleast one Uppercase character!!</p></div>
+                        <div class="col-12 col-md-12"><p>*Password should contain atleast one Lowercase character!!</p></div>
+                      </div>
+                    
+                    </div>
+                    
+                  </div>
+            </div>
+            
+        </div>
+
+        <script>
+
+          let pwdshow=document.getElementById("pswd");
+          let eye=document.getElementById("eye");
+          eye.addEventListener("click",function(){
+            if(eye.classList.contains("fa-eye")){
+              eye.classList.remove("fa-eye");
+              eye.classList.add("fa-eye-slash");
+              pwdshow.setAttribute("type","text");
+            }else{
+              eye.classList.remove("fa-eye-slash");
+              eye.classList.add("fa-eye");
+              pwdshow.setAttribute("type","password");
+            }
+          });
+
+
+        function change_password(){
+               let pwd=document.getElementById("pswd").value;
+               let cnf_pwd=document.getElementById("cnf_pswd").value;
+               let error_msg=document.getElementById("error_msg");
+                error_msg.innerText=" ";
+        
+            if(pwd==""||cnf_pwd==""){
+              error_msg.innerText="Empty field is not allowed!!";
+              return false;
+            }else if(pwd.trim()==""||cnf_pwd.trim()==""){
+              error_msg.innerText="Space is not allowed!!";
+              return false;
+            }else if(pwd.length<8){
+              error_msg.innerText="*Minimum 8 or more characters!!";
+              return false;
+            }else if(!pwd.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]+/)){
+              error_msg.innerText="*atleast one special symbols!!";
+              return false;
+            }else if(!pwd.match(/\d/)){
+              error_msg.innerText="*atleast one number!!";
+              return false;
+            }else if(!pwd.match(/[A-Z]/)){
+              error_msg.innerText="*atleast one Uppercase character!!";
+              return false;
+            }else if(!pwd.match(/[a-z]/)){
+              error_msg.innerText="*atleast one Lowercase character!!";
+              return false;
+            }else if(pwd!=cnf_pwd){
+              error_msg.innerText="Confirm password doesn't match!!";
+              return false;
+            }else{
+              return true;
+            }
+
+        } 
+           
+        </script>
+    </body>
+</html>
