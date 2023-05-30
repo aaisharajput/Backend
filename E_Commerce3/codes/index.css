@@ -1,0 +1,132 @@
+*{
+    padding:0 0;
+    margin:0 0;
+}
+
+/* navbar*/
+.navbar{
+    background-color: #f3edf6;
+    color: #fff;
+}
+
+nav .code,nav .quotient{
+    color: #951ac9;
+}
+
+nav .code{
+    padding-left: 20px;
+    font-family: "Changa";
+    font-weight: 500;
+    font-size: 27px;
+}
+
+nav .quotient{
+    font-family: 'Changa One',cursive;
+    font-size: 27px;
+    margin-left:-6px;
+}
+
+
+.link1,.link2{
+    color: #333333;
+    font-size: 16.5px;
+}
+
+.link3,.link4{
+    color: #707070;
+}
+
+.link3{
+    font-size:25px;
+    font-weight: lighter;
+    color:#dedbdb
+}
+
+.fa-user,.dropdown-toggle,.dropdown-toggle:hover{
+    color: #951ac9;
+}
+
+/*footer*/
+footer{
+    background-color: #EFEFEF;
+    
+}
+footer .code{
+    padding-left: 20px;
+    font-family: "Changa";
+    font-weight: 500;
+    font-size: 27px;
+}
+
+footer .quotient{
+    font-family: 'Changa One',cursive;
+    font-size: 27px;
+    margin-left:-6px;
+}
+
+footer i{
+    font-size: 25px;
+    padding-right: 10px;
+}
+
+footer a{
+    color: #727272;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+footer a:hover{
+    text-decoration: none;
+    color: #000;
+}
+
+i{
+    cursor: pointer;
+}
+
+
+/* titles */
+.title{
+    padding-left: 4%;
+}
+
+.load{
+    background-color: #d68bf6;
+    color: #fff;
+}
+.load:hover{
+    background-color: #b53ce9;
+    color: #fff;
+}
+.load:focus{
+    box-shadow: none;
+}
+
+
+/*carousel*/
+.carousel{
+    box-shadow:5px 10px 5px 10px #dfdcdc;
+}
+.owl-nav{
+    display:flex;
+    justify-content: space-evenly;
+    font-size: 60px;
+}
+
+
+/* items */
+.card{
+    width: 90%;
+    border: none;
+ }
+
+ .card img{
+   height: 380px;
+ }
+ .btnn{
+    border:1px solid rgb(197, 197, 197);
+    padding: 5%;
+ }
+
+ .btn{
+    padding: 5px 20px;
+ }
