@@ -1,0 +1,124 @@
+<div class="container-fluid sliderss owl-carousel pt-5 pl-5" id="sliderss">
+</div>
+
+<script>
+  let more;
+    let sliderss=document.getElementById("sliderss");
+    get_details(function(data){
+      more=data;
+      if(data!=0)
+      for(let i=0;i<5;i++){
+         sliderss.innerHTML+=`
+                        <div class="card item">
+                           <div class="product_name">
+                              <h5 id="item_name">${data[i].p_name}</h5>
+                           </div>
+                           <div class="img">
+                              <img src="${data[i].img}" alt="${data[i].p_name}">
+                              
+                              <div class="btnn d-flex justify-content-around">
+                                 <input type="button" onclick="add_item_cart(${i})" class="btn btn-success" value="Add To Cart">
+                                 <button class="btn btn-success" onclick="more_details(${i})">View Details</button>
+                              </div>
+                              
+                           </div>
+                        </div>`;
+                     }
+                     
+                     scrolling();
+    });
+
+    function add_item_cart(i){
+      add(i+1,(str)=>{
+          if(str=="Added"){
+            Swal.fire(
+                        'Added!!',
+                        'Item has been added successfully in cart.',
+                        'success',
+                     )
+          }
+      })
+    }
+    function add(id,callback){
+            let request = new XMLHttpRequest();
+                request.open("POST","/addToCart");
+                request.setRequestHeader("Content-Type","application/json");
+
+                request.addEventListener("load", function(){
+                  let result=JSON.parse(request.responseText);
+                  if(result.redirect){
+                    window.location.href=result.redirect;
+                  }else
+                    callback(result.str);
+                });
+                request.send(JSON.stringify({id:id}));
+   }
+
+    function more_details(id){
+
+    let span=`<div class="row pt-3" style="overflow-x:hidden">
+              <div class="col-12 col-md-4">
+                  <img id="p_img" src="${more[id].img}" style="height: 90%;width: 115%;">
+              </div>
+              <div class="col-12 col-md-8">
+                <div class="row">
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>saller_name :</p></div> <div class="col-8 col-md-8 d-flex justify-content-start"><p>${more[id].saller_name}</p></div>
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>shipping_charges :</p></div> <div class="col-8 col-md-8 d-flex justify-content-start"><p>${more[id].shipping_charges}</p></div>
+                  <div class="col-4 col-md-4 d-flex justify-content-end"><p>Product Details :</p></div> <div class="col-8 col-md-8 d-flex justify-content-start"><textarea rows="10" class="form-control" style="background:#fff;border:none" disabled>${more[id].p_details}</textarea></div>
+                  
+                </div>
+              </div>
+              
+            </div> `;
+
+          Swal.fire({
+              title:more[id].p_name+" "+ more[id].color+" Rs."+ more[id].price,
+              width:1000,
+              html:span,
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Add To Cart'
+          }).then((result) => {
+                if (result.isConfirmed) {
+                  add_item_cart(id)
+                }
+              })
+   }
+
+   function get_details(callback){
+            let request = new XMLHttpRequest();
+                request.open("POST","/getdetails");
+                request.setRequestHeader("Content-Type","application/json");
+                request.send(JSON.stringify({counter:5}));
+
+                request.addEventListener("load", function(){
+                  callback(JSON.parse(request.responseText))
+                });
+   }
+
+   
+
+function scrolling(){
+$(".sliderss").owlCarousel({
+  loop: true,
+  nav:true,
+  margin:0,
+  responsive: {
+    0:{
+      items:1,
+    },
+    600:{
+      items:2,
+    },
+    900:{
+      items:3,
+    },
+    1250:{
+      items:4,
+    }
+  }
+});
+}
+
+</script>

@@ -1,0 +1,94 @@
+<html>
+    <head>
+      <%- include('links'); %>
+      <link href="admin.css" rel="stylesheet">
+
+    </head>
+    <body>
+      <%- include('adminheader'); %>
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center pt-5 pb-4">
+                <div class="title"><h1>Welcome Admin</h1></div>
+            </div>
+            <div class="row d-flex justify-content-center">
+              <p class="pt-1 text-success" id="msg"><%=msg%></p>
+            </div>
+            <div class="row d-flex justify-content-center">
+              
+                <form  method="post" onsubmit="return verify_fields();"  id="myForm" class="form p-5" action="/new_product" enctype="multipart/form-data">
+                    <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                      <label for="saller_name">Saller Name</label>
+                      <input type="text" class="form-control ml-4" name="saller_name" id="saller_name" required>
+                    </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                      <label for="p_name">Product Name</label>
+                      <input type="text" class="form-control ml-4" name="p_name" id="p_name" required>
+                    </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                      <label for="stock">Stock</label>
+                      <input type="text" class="form-control ml-4" name="stock" id="stock" required>
+                    </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                      <label for="price">Price</label>
+                      <input type="text" class="form-control ml-4" name="price" id="price" required>
+                    </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                      <label for="color">Color</label>
+                      <input type="text" class="form-control ml-4" name="color" id="color" required>
+                    </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                      <label for="shipping_charges">Shipping Charges</label>
+                      <input type="text" class="form-control ml-4" name="shipping_charges" id="shipping_charges" required>
+                    </div>
+                    </div>
+                    <div class="col-12 col-md-12">
+                        <div class="form-group">
+                      <label for="p_details">Description:</label>
+                      <textarea class="form-control ml-4"  rows="8" name="p_details" id="p_details" required></textarea>
+                    </div>
+                    </div>
+                    <div class="col-12 col-md-12">
+                        <div class="form-group">
+                      <label for="img">Product Image(Size:upto 250kb, Type:jpeg/jpg/png)</label>
+                      <input type="file" class="form-control ml-4" accept="image/png, image/jpeg, image/jpg"  rows="8" name="img" id="img" required>
+                    </div>
+                    </div>
+                      <div class="col-12 col-md-12 text-center">
+                        <input type="submit" class="btn add pl-5 pr-5 mt-4" value="Add Product" id="addbtn"> 
+                        <input type="button" class="btn btn-success pl-5 pr-5 mt-4" value="Update" id="updt" disabled> 
+                        <p style="color:red" class="pt-3" id="wrong"></p>
+                        
+                      </div>
+                    
+                    </div>
+                  </form>
+            </div>
+            <!-- <div class="row d-flex justify-content-center text-center pt-5">
+              <h2>Recent Added Products</h2>
+          </div>
+          <div class="row pl-5 pr-5 pb-5" id="recent">
+              
+          </div> -->
+            <div class="row d-flex justify-content-center text-center pt-5">
+                <h2>Products</h2>
+            </div>
+            <div class="row pl-5 pr-5 pb-5" id="list">
+                
+            </div>
+            <%- include('footer'); %>
+        </div>
+        <script src="admin.js"></script>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+
+<nav class="navbar navbar-expand-md">
+    <!-- Brand -->
+    <a class="navbar-brand"><span class="code">Apna</span> <span class="quotient">Bazaar</span></a>
+  
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Navbar links -->
+  
+    <div class="collapse navbar-collapse pr-3 justify-content-end" id="collapsibleNavbar">
+
+        <ul class="navbar-nav pt-3">
+          <li class="nav-item pr-4">
+              <p class="nav-link" style="color:rgb(89, 87, 87)">Welcome<span class="link2" style="color:#951ac9;font-weight: 600;text-transform: uppercase;"> <%=user%></span></p>
+            </li>
+          <li class="nav-item pr-4">
+            <form method="post" action="/adminlogout">
+            <button class="btn" type="submit"><span class="link2">Logout</span></button>
+          </form>
+          </li>
+        </ul>
+
+    </div>
+  </nav>
+  
+  

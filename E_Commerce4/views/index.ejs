@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<title>ApnaBazaar</title>
+<head>
+ 
+  <%- include('links'); %>
+  <link href="index.css" rel="stylesheet">
+
+</head>
+     
+
+<body>
+
+  <%- include('header'); %>
+
+<div class="container-fluid">
+  <div class="row pl-5 pt-5">
+    <div class="col-2 col-md-2"><p>Category 1</p></div>
+    <div class="col-2 col-md-2"><p>Category 2</p></div>
+    <div class="col-2 col-md-2"><p>Category 3</p></div>
+    <div class="col-2 col-md-2"><p>Category 4</p></div>
+    <div class="col-2 col-md-2"><p>Category 5</p></div>
+    <div class="col-2 col-md-2"><p>Category 6</p></div>
+  </div>
+    <section class="item_list">
+      <div class="row pt-4 pb-4">
+        <%- include('intro'); %>
+      </div>
+      <div class="row pt-5 title">
+        <h3>Products You Love It.</h3>
+      </div>
+      <div class="row">
+        <%- include('items'); %>
+      </div>
+
+      <div class="add_items" id="add_items">
+        <div class="row title">
+          <h3>More Products</h3>
+        </div>
+
+      </div>
+      <div class="row  d-flex justify-content-center" id="empty" style="color:red">
+        <p></p>
+      </div>
+      <div class="row  d-flex justify-content-center p-4">
+        <button class="btn load" id="load_more">Load more products</button>
+      </div>
+    </section>
+
+    <%- include('footer'); %>
+    <script src="items.js"></script>
+</div>
+</body>
+</html>
