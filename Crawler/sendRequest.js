@@ -49,22 +49,6 @@ export const appendURL=(url)=>{
   })
 }
 
-// export const readFile=(next_file)=>{
-//   return new Promise((resolve, reject) => {
-//     // if(fs.existsSync(`data/data${next_file}.txt`)){
-//       let data='';
-//       const ReadStream = fs.createReadStream(`data/data${next_file}.txt`);
-
-//       console.log(`File name: data${next_file}.txt`);
-//       ReadStream.on("error", (error) => {return reject(error);});
-//       ReadStream.on("data", (chunk) => {data+=chunk;console.log("chunk",chunk);})
-//       ReadStream.on("end", () => {return resolve(data);});
-//     // }else{
-//     //   return reject(new Error("failed"));
-//     // }
-//   })
-// }
-
 export const readFile=(next_file)=>{
   return new Promise((resolve, reject) => {
     fs.readFile(`data/data${next_file}.txt`, "utf-8", (err, data) => {
@@ -109,6 +93,6 @@ export const sendNextURL=(arr,next_file,parent,Url_set)=>{
         if (i + 1 == arr.length) {
           levelCrawling(++next_file,++parent);
         }
-      }, i * 2000);
+      }, i * 10000);
     });
 }
