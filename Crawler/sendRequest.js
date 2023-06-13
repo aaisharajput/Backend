@@ -79,20 +79,22 @@ export const ResumeFile=(filename)=>{
 }
 
 export const sendNextURL=(arr,next_file,parent,Url_set)=>{
-    let obj = {};
-    arr.forEach((link, i) => {
-      setTimeout(() => {
-        if (!Url_set.has(link)) {
-          console.log("next link: ", link);
-          obj = { File_no: next_file, lastURL: link, newFile: parent+1};
-          fs.writeFile("Resume.txt", JSON.stringify(obj), (err) => {
-            if(err) console.log("error: resume file write",err);
-            else startCrawler(link,++parent);
-          });
-        }
-        if (i + 1 == arr.length) {
-          levelCrawling(++next_file,++parent);
-        }
-      }, i * 10000);
-    });
+  let obj = {};
+    let i=-1,link;
+
+    setInterval(() => {
+      i++;
+      link=arr[i];
+      if (!Url_set.has(link)) {
+        console.log("next link: ", link);
+        obj = { File_no: next_file, lastURL: link, newFile: parent+1};
+        fs.writeFile("Resume.txt", JSON.stringify(obj), (err) => {
+          if(err) console.log("error: resume file write",err);
+          else startCrawler(link,++parent);
+        });
+      }
+      if (i + 1 == arr.length) {
+        levelCrawling(++next_file,++parent);
+      }
+    },10000);
 }
